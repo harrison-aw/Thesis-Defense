@@ -2,6 +2,8 @@
 \usetheme{Berlin}
 \usecolortheme{seahorse}
 
+\usepackage{amsmath}
+
 \title{Bounding the order of a group with a large conjugacy class}
 \author{Anthony Harrison}
 \institute{Texas State University-San Marcos}
@@ -31,13 +33,19 @@ About this talk:
 \begin{frame}
 \frametitle{Groups with a character of large degree}
 Noah Snyder introduced a parameter $e$ that is ``small'' when a group has an irreducible character with ``large'' degree.
-\vskip1cm
-He showed it was possible to bound the order of a group by $e$: $|G| \le ((2e)!)^2$.
+\begin{itemize}
+	\item<1-> $|G| = d(d+e)$ where $d$ is the degree of an ordinary irreducible character of $G$.
+	\item<2-> $e$ is always an integer.
+	\item<3-> $|G| \le ((2e)!)^2$.
+\end{itemize}
+\uncover<4->{
+\vskip0.5cm
+The bound on the order of $G$ inspired at least 3 papers.
+}
 \end{frame}
 
 \begin{frame}
 \frametitle{Bounding the order of a group with a large character degree}
-A lot of research has gone into this bound:
 \begin{itemize}
 	\item Martin Isaacs: $|G| \le Be^6$ for some universal constant $B$.
 	\item Christina Durfee and Sara Jensen: $|G| \le e^6 - e^4$.
@@ -49,12 +57,22 @@ A lot of research has gone into this bound:
 
 \begin{frame}
 \frametitle{Group Theoretic Analog}
-There is a close relationship between irreducible characters and conjugacy classes
+There is a close relationship between irreducible characters and conjugacy classes.
 \begin{itemize}
 	\item Characters are constant functions over a given conjugacy class.
 	\item The number of conjugacy classes equals the number irreducible characters.
 \end{itemize}
-We will redefine $e$ to use conjugacy classes instead of irreducible character degrees.
+\pause
+We will redefine $e$ to use conjugacy class sizes instead of irreducible character degrees.
+\end{frame}
+
+\begin{frame}
+\frametitle{Main Result}
+Our goal will be to:
+\begin{itemize}
+	\item Bound the order of a group with the newly defined $e$.
+	\item Classify all groups attaining this bound.
+\end{itemize}
 \end{frame}
 
 
@@ -62,41 +80,116 @@ We will redefine $e$ to use conjugacy classes instead of irreducible character d
 
 \begin{frame}
 \frametitle{Group Actions}
+\begin{block}{Definition}
 Let $G$ be a group and $\Omega$ be a set. A \emph{group action} is a homomorphism $\pi: G \to Sym(\Omega)$, where $Sym(\Omega)$ is the symmetric group of $\Omega$.
+\end{block}
 \begin{itemize}
 	\item<2-> The image of $G$ under $\pi$ is called the \emph{permutation representation} of $G$.
+	\item<3-> We will denote the bijection $\pi(g)$ for $g \in G$ by $\pi_g$.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
+\frametitle{Examples of Group Actions}
+Let $G = S_n$ and $\Omega = \{1, 2, \ldots, n\}$. Then $\pi$ is an isomorphism and $\pi_g$ for $g \in S_n$ simply permutes elements of $\Omega$.
+\vskip0.5cm
+\uncover<2->{
+Let $G$ be a group and $\Omega = G$. Define $\pi: G \to Sym(G)$ to be the homomorphism such that $\pi_g(h)= g^{-1}hg$ for $h, g \in G$. This is the conjugation action of $G$ on itself.
+}
+\end{frame}
+
+\begin{frame}
 \frametitle{Orbits}
+\begin{block}{Definition}
+The \emph{orbit} of $\alpha \in \Omega$ is the set $\mathcal{O}_\alpha = \{ \pi_g(\alpha) : g \in G \}$.
+\end{block}
+\vskip0.5cm
+\uncover<2->{
+Let $S_n$ act on $\Omega = \{1,2,\ldots,n\}$. This action has only a single orbit, $\mathcal{O}_1 = \Omega$.
+}
+\vskip0.5cm
+\uncover<3->{
+Let $G$ be an abelian group and let it act on itself by conjugation. Every orbit is a singleton: $\mathcal{O}_g = \{ g \}$ for all $g \in G$.
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Stabilizers}
+\begin{block}{Definition}
+The \emph{stabilizer} of $\alpha \in \Omega$ is the group $G_\alpha = \{ g \in G : \pi_g(\alpha) = \alpha \}$.
+\end{block}
+\vskip0.5cm
+\uncover<2->{
+Let $S_n$ act on $\Omega = \{1,2,\ldots,n\}$. The stabilizer of each $g \in S_n$ has order $(n-1)!$.
+}
+\vskip0.5cm
+\uncover<3->{
+Let $G$ act on itself by conjugation. The stabilizer of $g \in G$ is $G_g = C_G(g)$, the centralizer of $g$ in $G$.
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Orbit-Stabilizer Theorem}
+\begin{block}{Theorem}
+Let $G$ be a group acting on a set $\Omega$. For $\alpha \in \Omega$, $|\mathcal{O}_\alpha| = |G : G_\alpha|$.
+\end{block}
+\vskip0.5cm
+\uncover<2->{
+Let $S_n$ act on $\Omega = \{1,2,\ldots,n\}$. For $g \in S_n$, $|\mathcal{O}_g| = n! / (n-1)! = n$.
+}
+\vskip0.5cm
+\uncover<3->{
+Let $G$ be a group acting on itself by conjugation. For $g \in G$, $|\mathcal{O}_g| = |G : C_G(g)|$.
+}
 \end{frame}
 
 \begin{frame}
 \frametitle{Conjugacy Classes}
-\end{frame}
-
-\begin{frame}
-\frametitle{Permutation Representations}
+\begin{block}{Definition}
+Let $G$ be a group. The \emph{conjugacy class} of $g \in G$ is the orbit of the $g$ under the conjugation action of $G$ on itself.
+\end{block}
+\begin{itemize}
+	\item The size of the conjugacy class of $g \in G$ is $|G : C_G(g)|$.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Dihedral Groups}
+\begin{block}{Definition}
+A dihedral group is a group $G$ with a cyclic subgroup $C$ of index 2 such that $G - C$ contains only involutions.
+\end{block}
+\begin{itemize}
+	\item If $C$ has odd order, $G$ has exactly one conjugacy class of involutions.
+	\item If $C$ has even order, $G$ has exactly three conjugacy classes of involutions.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Generalized Dihedral Groups}
+\begin{block}{Definition}
+A \emph{generalized dihedral group} is a group $G$ with an abelian subgroup $B$ of index 2 such that $G - B$ contains only involutions.
+\end{block}
+\begin{itemize}
+	\item If $B$ has odd order, $G$ has exactly one class of involutions.
+\end{itemize}
 \end{frame}
 
 
 \section{Main Result}
 
 \begin{frame}
-\frametitle{The Parameter}
+\frametitle{Defining e}
+\begin{block}{Definition}
+Let $G$ be a group and $d$ be the square root of its largest conjugacy class size. Define $e$ via the equation $|G| = d(d + e)$.
+\end{block}
+\begin{itemize}
+	\item $e$ is not an integer!
+	\item $e = (|C_G(x)| - 1) \cdot \sqrt{|G : C_G(x)|}$ where $x$ is a member of the largest conjugacy class of $G$.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Examples}
+\frametitle{Calculating e}
 \end{frame}
 
 \begin{frame}
